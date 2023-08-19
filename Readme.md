@@ -1,6 +1,6 @@
 # LeadAgent-Application
 
-LeadAgent is a project developed by Team-02. This README provides an overview of the proposed solution for the LeadAgent project. It includes details about the technology stack, the Java API schema, the React frontend, and the database collections and schema. The report also contains the preliminary data needed to begin creating the application.
+LeadAgent is a project developed by Team-02. This README provides an overview of the proposed solution for the LeadAgent project. It includes details about the technology stack, the Java API schema, the React frontend, and the database collections and schema. 
 
 ## Table of Contents
 
