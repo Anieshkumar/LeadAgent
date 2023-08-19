@@ -35,7 +35,7 @@ To set up the LeadAgent application locally, follow these steps:
 
 3. **MongoDB:**
    - Install MongoDB and set up a database instance.
-   - Create a database named `Database Name` in MongoDB.
+   - Create a database named `Siddhaarth` in MongoDB.
 
 4. **Node.js:**
    - Install Node.js if not already installed.
@@ -49,4 +49,4 @@ To set up the LeadAgent application locally, follow these steps:
 
 2. **Spring Boot Backend:**
    - Open the `Backend` folder in Eclipse IDE as an existing Maven project.
-   - Run `Java File Name` file in the backend to start the Spring Boot app. It will start on [http://localhost:8080](http://localhost:8080).
+   - Run `LeadAgentApplication` file which is present in the folder named 'src/main/java/com/example' in the backend to start the Spring Boot app. 
