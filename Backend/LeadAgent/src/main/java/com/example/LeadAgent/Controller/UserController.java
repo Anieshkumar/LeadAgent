@@ -1,3 +1,4 @@
+
 package com.example.LeadAgent.Controller;
 
 import com.example.LeadAgent.Model.User;
@@ -34,6 +35,26 @@ public class UserController {
 	private String saveUser(@RequestBody User users) {
 		userService.saveorUpdate(users);
 		return users.getId();
+	}
+
+	// Endpoint for resetting user password
+	@PostMapping("/reset-password")
+	private ResponseEntity<String> resetPassword(@RequestBody Map<String, String> resetRequest) {
+		String email = resetRequest.get("email");
+		String newPassword = resetRequest.get("newPassword");
+
+		if (userService.isValidEmail(email)) {
+			User user = userService.getUserByEmail(email);
+			if (user != null) {
+				user.setPassword(newPassword);
+				userService.saveorUpdate(user);
+				return ResponseEntity.ok("Password reset successful");
+			} else {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+			}
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid email format");
+		}
 	}
 
 	// Endpoint to get all users
@@ -94,7 +115,7 @@ public class UserController {
 		if (user != null && user.getRole().equalsIgnoreCase("Agent")) {
 			response.setStatus(true);
 			response.setMessage("Valid login");
-			response.setName(user.getName()); // To display name in the dashboard
+			response.setName(user.getFirstName() + " " + user.getLastName()); // To display name in the dashboard
 			response.setId(user.getId()); // To get the leads assigned to this Id
 		} else if (user != null && !user.getRole().equalsIgnoreCase("Agent")) {
 			response.setStatus(false);
@@ -114,3 +135,4 @@ public class UserController {
 	}
 
 }
+

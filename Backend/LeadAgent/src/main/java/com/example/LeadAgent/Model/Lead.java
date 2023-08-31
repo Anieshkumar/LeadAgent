@@ -10,7 +10,8 @@ public class Lead {
 
 	@Id
 	private String id;
-	private String name;
+	private String firstName;
+	private String lastName;
 	private String mobile;
 	private String email;
 	private String password;
@@ -27,8 +28,9 @@ public class Lead {
 	}
 
 	// Constructor to initialize Lead object
-	public Lead(String name, String mobile, String email, String password, String assignedTo, String status) {
-		this.name = name;
+	public Lead(String firstName, String lastName, String mobile, String email, String password, String assignedTo, String status) {
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.mobile = mobile;
 		this.email = email;
 		this.password = password;
@@ -47,12 +49,20 @@ public class Lead {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getMobile() {

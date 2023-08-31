@@ -9,14 +9,19 @@ import org.springframework.stereotype.Service;
 
 import com.example.LeadAgent.Model.History;
 import com.example.LeadAgent.Model.Lead;
+import com.example.LeadAgent.Model.User;
 import com.example.LeadAgent.Repository.HistoryRepository;
 import com.example.LeadAgent.Repository.LeadRepository;
+import com.example.LeadAgent.Repository.UserRepository;
 
 @Service
 public class LeadService {
 
 	@Autowired
 	private HistoryRepository historyRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	private final LeadRepository leadRepository;
 
@@ -33,7 +38,8 @@ public class LeadService {
 		lead.setPassword(hashedPassword);
 		Lead id = leadRepository.save(lead);
 		String leadId = id.getId();
-		History newHistory = new History(leadId, lead.getName(), "New", "New", "New", "New", lead.getCreatedAt());
+		String leadName = lead.getFirstName() + " " + lead.getLastName();
+		History newHistory = new History(leadId, leadName, "-", "-", "-", "-", lead.getCreatedAt());
 		historyRepository.save(newHistory);
 		return id;
 	}
@@ -69,8 +75,10 @@ public class LeadService {
 			lead.setUpdatedAt(new Date());
 			leadRepository.save(lead);
 			// Create a new history entry for the lead status update
-			History history = new History(leadId, lead.getName(), oldStatus, status, lead.getAssignedTo(), notes,
-					new Date());
+			String leadName = lead.getFirstName() + " " + lead.getLastName();
+			User assignedUser = userRepository.findById(lead.getAssignedTo()).orElse(null);
+			String assignedToUser = assignedUser.getFirstName() + " " + assignedUser.getLastName();
+			History history = new History(leadId, leadName, oldStatus, status, assignedToUser, notes, new Date());
 			historyRepository.save(history);
 		}
 		return lead;

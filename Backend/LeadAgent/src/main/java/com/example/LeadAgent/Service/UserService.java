@@ -38,6 +38,10 @@ public class UserService {
 	public User getUserByID(String userId) {
 		return repo.findById(userId).orElse(null);
 	}
+	
+	public User getUserByEmail(String email) {
+        return repo.findByEmail(email);
+    }
 
 	// Checks if the user present with the given credentials
 	public User authenticateUser(String email, String password) {
@@ -58,3 +62,5 @@ public class UserService {
 	}
 
 }
+
+
