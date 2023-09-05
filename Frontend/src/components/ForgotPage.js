@@ -49,17 +49,20 @@ const ForgotPage = () => {
 
   return (
     <section className="bg-gray-100 dark:bg-gray-900 h-screen flex justify-center items-center">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-lg hover:shadow-xl p-6 dark:bg-gray-800">
+      <div className="max-w-md w-full rounded-lg">
       <img
-          className="h-8 mr-2 mb-4"
+          className="h-8 mr-4 mb-4"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/MassMutual_logo.svg/2560px-MassMutual_logo.svg.png"
           alt="MassMutual Logo"
         />
-        <br></br>
+      <div className="max-w-md w-full bg-white rounded-lg shadow-lg hover:shadow-xl p-6 dark:bg-gray-800">
+      
+        
         <div className="mb-4">
           <h2 className=" text-2xl font-semibold text-gray-800 dark:text-white">
             Reset Your Password
           </h2>
+          <br></br>
         </div>
         <div>
           <label>Email:</label>
@@ -99,6 +102,7 @@ const ForgotPage = () => {
         >
           Reset Password
         </button>
+      </div>
       </div>
     </section>
   );
