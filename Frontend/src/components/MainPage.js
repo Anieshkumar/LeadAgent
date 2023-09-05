@@ -24,20 +24,7 @@ const MainPage = () => {
     setActiveTab(index);
   };
 
-  const handleDownload = (tabIndex) => {
-    const dataToDownload = tabIndex === 0 ? assignedLeads : historyData;
-    const csvData = convertDataToCSV(dataToDownload);
 
-    const blob = new Blob([csvData], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = tabIndex === 0 ? 'assigned_leads.csv' : 'history.csv';
-    link.click();
-
-    window.URL.revokeObjectURL(url);
-  };
 
   const fetchAssignedLeads = async () => {
     const response = await fetch(`http://localhost:8088/leads/assigned-to/${agentInfo.id}`);
@@ -51,18 +38,6 @@ const MainPage = () => {
     return data;
   };
 
-  const convertDataToCSV = (data) => {
-    const csvRows = [];
-    const headers = Object.keys(data[0]);
-    csvRows.push(headers.join(','));
-
-    data.forEach((rowData) => {
-      const values = headers.map((header) => rowData[header]);
-      csvRows.push(values.join(','));
-    });
-
-    return csvRows.join('\n');
-  };
 
   const handleLogout = () => {
     navigate('/');

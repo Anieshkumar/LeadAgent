@@ -79,61 +79,54 @@ const LeadHistory = () => {
 
           </button>
             </div>
-            <div className="-my-2  sm:-mx-6 lg:-mx-8">
-          <div className="py-2 align-middle   inline-block min-w-full sm:px-6 lg:px-8">
-            <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-            <table className="min-w-full divide-y divide-gray-200 ">
-                <thead className="bg-blue-300  sticky top-0 z-10">
-                  <tr className='table-header'>
-                    <th scope="col" className="px-6 py-4 text-left text-xs font-bold text-black uppercase tracking-wider sticky">
-                      Lead Name
-                    </th>
-                    <th scope="col" className="px-5 py-4 text-xs font-bold text-black uppercase tracking-wider sticky">
-                      Old Status
-                    </th>
-                    <th scope="col" className="px-8 py-4 text-center text-xs font-bold text-black uppercase tracking-wider sticky">
-                      New Status
-                    </th>
-                    <th scope="col" className="px-5 py-4 text-xs font-bold text-black uppercase tracking-wider sticky">
-                      Modified By
-                    </th>
-                    <th scope="col" className="px-6 py-4 text-center text-xs font-bold text-black uppercase tracking-wider sticky">
-                      Notes
-                    </th>
-                    <th scope="col" className="px-6 py-4 text-left text-xs font-bold text-black uppercase tracking-wider sticky">
-                      Modified / Created Date
-                    </th>
-                  </tr>
-                </thead>
-                </table>
-              </div>
-              </div>
-              </div>
+            
           </div>
         </div>
         <div className="-my-2 sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle  text-left inline-block min-w-full sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
             <table className="min-w-full divide-y divide-gray-200 ">
+            <thead className="bg-blue-300  sticky top-0 z-10">
+                  <tr className='table-header'>
+                    <th scope="col" className="px-5 py-3 text-left text-xs font-bold text-black uppercase tracking-wider sticky equal-column-widths">
+                      Lead Name
+                    </th>
+                    <th scope="col" className="px-5 py-3 text-xs font-bold text-black uppercase tracking-wider sticky equal-column-widths">
+                      Old Status
+                    </th>
+                    <th scope="col" className="px-3 py-4 text-xs font-bold text-black uppercase tracking-wider sticky equal-column-widths">
+                      New Status
+                    </th>
+                    <th scope="col" className="px-5 py-4 text-xs font-bold text-black uppercase tracking-wider sticky equal-column-widths">
+                      Modified By
+                    </th>
+                    <th scope="col" className="px-8 py-4 text-center text-xs font-bold text-black uppercase tracking-wider sticky equal-column-widths">
+                      Notes
+                    </th>
+                    <th scope="col" className="px-5 py-4 text-left text-xs font-bold text-black uppercase tracking-wider sticky equal-column-widths">
+                      Modified / Created Date
+                    </th>
+                  </tr>
+                </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
                   {filteredHistory.map(history => (
                     <tr key={history.id}>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-12 py-4 whitespace-nowrap equal-column-widths">
                         {history.leadName}
                       </td>
-                      <td className="px-5 py-4 whitespace-nowrap">
+                      <td className="px-5 py-4 whitespace-nowrap equal-column-widths">
                         {history.oldStatus}
                       </td>
-                      <td className="px-8 py-4 whitespace-nowrap">
+                      <td className="px-8 py-4 whitespace-nowrap equal-column-widths">
                         {history.newStatus}
                       </td>
-                      <td className="px-5 py-4 whitespace-nowrap">
+                      <td className="px-5 py-4 whitespace-nowrap equal-column-widths">
                         {history.modifiedBy}
                       </td>
-                      <td className="px-6 py-4 text-left whitespace-nowrap">
+                      <td className="px-6 py-4 text-left whitespace-nowrap equal-column-widths">
                         {history.notes}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4 whitespace-nowrap equal-column-widths">
                         {new Date(history.modificationDate).toLocaleString()}
                       </td>
                     </tr>

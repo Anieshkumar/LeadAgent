@@ -1,0 +1,11 @@
+.equal-column-widths th,
+.equal-column-widths td {
+  width: calc(100% / 6); /* Divide equally for 6 columns */
+  white-space: nowrap; /* Prevent wrapping content */
+}
+.large-content-cell {
+    max-width: 200px; /* Adjust the max-width as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

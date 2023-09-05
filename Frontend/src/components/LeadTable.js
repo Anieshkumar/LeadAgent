@@ -84,27 +84,32 @@ const LeadTable = ({ agentId }) => {
     const updatedStatus = selectedStatus[leadId];
     const updatedRemarks = remarks[leadId];
   
-    const shouldUpdate = window.confirm('Are you sure you want to update the status?');
+    if (updatedStatus && updatedRemarks) {
+      const isConfirmed = window.confirm('Are you sure you want to update the status?');
   
-    if (shouldUpdate) {
-      const requestBody = {
-        status: updatedStatus,
-        notes: updatedRemarks,
-      };
+      if (isConfirmed) {
+        const requestBody = {
+          status: updatedStatus,
+          notes: updatedRemarks,
+        };
   
-      axios.put(`http://localhost:8088/leads/update-status/${leadId}`, requestBody, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then(response => {
-          console.log('Lead status updated successfully:', response.data);
-          window.location.reload();
+        axios.put(`http://localhost:8088/leads/update-status/${leadId}`, requestBody, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
         })
-        .catch(error => {
-          console.error('Error updating lead status:', error);
-        });
-    }
+          .then(response => {
+            console.log('Lead status updated successfully:', response.data);
+            window.location.reload();
+          })
+          .catch(error => {
+            console.error('Error updating lead status:', error);
+          });
+      }
+    } else {
+      alert('Please select a status and enter remarks before updating.');
+    }
+  
   };
   
 
